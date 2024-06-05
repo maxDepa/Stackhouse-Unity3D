@@ -6,5 +6,17 @@ namespace SH.Model {
         protected PlayerState(PlayerController owner) : base(owner) {
 
         }
+
+        protected void GoToMove() {
+            owner.GoToMove();
+        }
+        
+        protected void GoToAttack() {
+            owner.GoToAttack();
+        }
+
+        protected void GoToRoll() {
+            owner.GoToRoll();
+        }
     }
 }

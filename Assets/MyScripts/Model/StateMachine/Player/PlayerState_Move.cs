@@ -17,14 +17,15 @@ namespace SH.Model {
         }
 
         public override void Initialize() {
-
+            EventManager.Instance.AddListener(MyEventIndex.OnMouseLeftClick, OnMouseLeftClick);
+            EventManager.Instance.AddListener(MyEventIndex.OnLeftCtrl, OnLeftCtrl);
+            animationStrategy.Initialize();
         }
 
         public override void Execute(float delta) {
             movementStrategy.Move(delta);
             rotationStrategy.Rotate(delta);
             animationStrategy.Update();
-            CheckExitConditions();
         }
 
         public override void LateExecute() {
@@ -32,12 +33,16 @@ namespace SH.Model {
         }
 
         public override void Exit() {
-
+            EventManager.Instance.RemoveListener(MyEventIndex.OnMouseLeftClick, OnMouseLeftClick);
+            EventManager.Instance.AddListener(MyEventIndex.OnLeftCtrl, OnLeftCtrl);
         }
 
-        private void CheckExitConditions() {
-
+        private void OnMouseLeftClick(MyEventArgs arg0) {
+            GoToAttack();
         }
 
+        private void OnLeftCtrl(MyEventArgs arg0) {
+            GoToRoll();
+        }
     }
 }

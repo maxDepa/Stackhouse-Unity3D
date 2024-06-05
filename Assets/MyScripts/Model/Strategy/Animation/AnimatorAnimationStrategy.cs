@@ -9,6 +9,8 @@ namespace SH.Model {
             this._animator = animator;
         }
 
+        public abstract void Initialize();
+
         public abstract void Update();
 
     }

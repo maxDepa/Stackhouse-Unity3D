@@ -1,15 +1,13 @@
 using SH.Dto;
 using SH.Model;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 
 namespace SH.BusinessLogic {
     [RequireComponent(typeof(CapsuleCollider))]
     [RequireComponent(typeof(Rigidbody))]
-    public class PlayerController : MonoBehaviour
+    public class PlayerController : MonoBehaviour, ISceneLoader
     {
         [Header("FBX")]
         [SerializeField] public GameObject fbx;
@@ -44,6 +42,18 @@ namespace SH.BusinessLogic {
                 new PlayerRigidbodyMovementStrategy(rigidbody, cam, _player.MovementSpeed),
                 new PlayerTransformRotationStrategy(transform, cam, _player.RotationSpeed),
                 new PlayerMoveAnimatorAnimationStrategy(anim)
+                )
+            );
+            stateMachine.AddState(PlayerStateIndex.Attack, new PlayerState_Attack(
+                this,
+                GetAnimationLength("Attack"),
+                new AttackAnimationStrategy(anim)
+                )
+            );
+            stateMachine.AddState(PlayerStateIndex.Roll, new PlayerState_Roll(
+                this,
+                GetAnimationLength("Roll"),
+                new RollAnimationStrategy(anim)
                 )
             );
             stateMachine.ChangeState(PlayerStateIndex.Move);
@@ -81,5 +91,26 @@ namespace SH.BusinessLogic {
         private void UpdateGravity(float delta) {
             rigidbody.AddForce(Vector3.down * _player.Gravity);
         }
+
+        public void GoToAttack() {
+            stateMachine.ChangeState(PlayerStateIndex.Attack);
+        }
+
+        public void GoToMove() {
+            stateMachine.ChangeState(PlayerStateIndex.Move);
+        }
+
+        public void GoToRoll() {
+            stateMachine.ChangeState(PlayerStateIndex.Roll);
+        }
+
+        public float GetAnimationLength(string clipName) {
+            foreach(AnimationClip clip in anim.runtimeAnimatorController.animationClips) {
+                if(clip.name.Equals(clipName))
+                    return clip.length * anim.speed;
+            }
+            return 0f;
+        }
+
     }
 }

@@ -8,6 +8,10 @@ namespace SH.Model {
 
         }
 
+        public override void Initialize() {
+            _animator.Play("Move");
+        }
+
         public override void Update() {
             _animator.SetFloat("Speed", InputManager.Instance.InputAxis.magnitude);
         }
