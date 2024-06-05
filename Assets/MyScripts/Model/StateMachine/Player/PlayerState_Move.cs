@@ -1,23 +1,31 @@
 using SH.BusinessLogic;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace SH.Model {
     public class PlayerState_Move : PlayerState
     {
         private IMovementStrategy movementStrategy;
+        private IRotationStrategy rotationStrategy;
+        private IAnimationStrategy animationStrategy;
 
-        public PlayerState_Move(PlayerController owner, IMovementStrategy movementStrategy) : base(owner) {
-            //this.movementStrategy = movementStrategy;
+        public PlayerState_Move(PlayerController owner, 
+            IMovementStrategy movementStrategy, 
+            IRotationStrategy rotationStrategy,
+            IAnimationStrategy animationStrategy) : base(owner) {
+            this.movementStrategy = movementStrategy;
+            this.rotationStrategy = rotationStrategy;
+            this.animationStrategy = animationStrategy;
         }
 
         public override void Initialize() {
-            //owner.MyPlayerAnimatorUpdater.GoToMoveBlendTree();
+
         }
 
-
+        public override void Execute(float delta) {
+            movementStrategy.Move(delta);
+            rotationStrategy.Rotate(delta);
+            animationStrategy.Update();
+            CheckExitConditions();
+        }
 
         public override void LateExecute() {
             
@@ -27,18 +35,9 @@ namespace SH.Model {
 
         }
 
-        private void Move() {
-            //owner.MyPlayerAnimatorUpdater.UpdateMoveAnimations();
-            //movementStrategy.Move(owner);
-        }
-
         private void CheckExitConditions() {
-            //if (!InputManager.Instance.IsMovingAxis)
-            //    owner.GoToIdleState();
-        }
-
-        public override void Execute(float delta) {
 
         }
+
     }
 }

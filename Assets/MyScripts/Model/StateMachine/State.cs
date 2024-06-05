@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 namespace SH.Model {
@@ -18,6 +17,7 @@ namespace SH.Model {
         public abstract void LateExecute();
 
         public abstract void Exit();
+
     }
 
 }
