@@ -185,12 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 563356861}
   pivot: {fileID: 810879051}
-  cam: {fileID: 0}
-  followSpeed: 5
-  horizontalAngleSpeed: 1
-  verticalAngleSpeed: 1
-  verticalAngleMin: -45
-  verticalAngleMax: 45
+  data: {fileID: 11400000, guid: 5c55bb8a0480e764d92410d1b6f44398, type: 2}
 --- !u!4 &555656218
 Transform:
   m_ObjectHideFlags: 0
