@@ -3,6 +3,7 @@ using SH.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 namespace SH.BusinessLogic {
@@ -12,6 +13,7 @@ namespace SH.BusinessLogic {
     {
         [Header("FBX")]
         [SerializeField] public GameObject fbx;
+        [SerializeField] public AnimatorController controller;
 
         [Header("Components")]
         [SerializeField] private Transform cam;
@@ -51,6 +53,15 @@ namespace SH.BusinessLogic {
             fbx.transform.parent = transform;
             fbx.transform.localPosition = Vector3.zero;
             fbx.transform.localRotation = Quaternion.identity;
+
+            if (fbx.TryGetComponent(out Animator animator)) {
+                anim = animator;
+                anim.runtimeAnimatorController = controller;
+            }
+            else {
+                anim = fbx.AddComponent<Animator>();
+                anim.runtimeAnimatorController = controller;
+            }
         }
 
         private void InitializeAnimator() {
