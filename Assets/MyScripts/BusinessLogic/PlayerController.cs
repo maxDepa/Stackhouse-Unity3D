@@ -18,22 +18,17 @@ namespace SH.BusinessLogic {
         [SerializeField] private new Rigidbody rigidbody;
         private Animator anim;
 
-        [Header("Data")]
-        [SerializeField] private PlayerData data;
-
-        private Player _player;
-
         private StateMachine<PlayerStateIndex> stateMachine;
 
+        /*Al posto di riferimento al GameManager, sarebbe meglio
+        Non esporre la property ma slegare le cose usando un evento apposito
+        */
+        private Player _player => GameManager.Instance.Player;
+
         private void Start() {
-            InitializePlayer();
             InitializeFBX();
             InitializeAnimator();
             InitializeStateMachine();
-        }
-
-        private void InitializePlayer() {
-            _player = new Player(data);
         }
 
         private void InitializeStateMachine() {
@@ -53,7 +48,8 @@ namespace SH.BusinessLogic {
             stateMachine.AddState(PlayerStateIndex.Roll, new PlayerState_Roll(
                 this,
                 GetAnimationLength("Roll"),
-                new RollAnimationStrategy(anim)
+                new RollAnimationStrategy(anim),
+                new ForwardMovementStrategy(rigidbody, _player.RollSpeed)
                 )
             );
             stateMachine.ChangeState(PlayerStateIndex.Move);
@@ -63,19 +59,17 @@ namespace SH.BusinessLogic {
             fbx.transform.parent = transform;
             fbx.transform.localPosition = Vector3.zero;
             fbx.transform.localRotation = Quaternion.identity;
-
-            if (fbx.TryGetComponent(out Animator animator)) {
-                anim = animator;
-                anim.runtimeAnimatorController = controller;
-            }
-            else {
-                anim = fbx.AddComponent<Animator>();
-                anim.runtimeAnimatorController = controller;
-            }
         }
 
         private void InitializeAnimator() {
-            anim = fbx.GetComponent<Animator>();
+            if (fbx.TryGetComponent(out Animator animator)) {
+                anim = animator;
+            }
+            else {
+                anim = fbx.AddComponent<Animator>();
+            }
+            anim.runtimeAnimatorController = controller;
+            anim.applyRootMotion = false;
         }
 
         private void Update() {
@@ -107,7 +101,7 @@ namespace SH.BusinessLogic {
         public float GetAnimationLength(string clipName) {
             foreach(AnimationClip clip in anim.runtimeAnimatorController.animationClips) {
                 if(clip.name.Equals(clipName))
-                    return clip.length * anim.speed;
+                    return clip.length / anim.speed;
             }
             return 0f;
         }

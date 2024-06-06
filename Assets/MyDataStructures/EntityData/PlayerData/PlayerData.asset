@@ -12,6 +12,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a8a0b0f4fc191c4fa40667a1ac42447, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
+  info:
+    name: Massimo
+    description: Un game dev di bolo
+  stats:
+    level:
+      value: 1
+      maxValue: 100
+    hp:
+      value: 32
+      maxValue: 32
+    mp:
+      value: 14
+      maxValue: 14
+    exp:
+      value: 0
+      maxValue: 500
+    atk:
+      value: 7
+    def:
+      value: 5
   movementSpeed: 5
   rotationSpeed: 10
   gravity: 9.8
+  rollSpeed: 4

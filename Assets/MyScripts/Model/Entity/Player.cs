@@ -2,32 +2,27 @@ using SH.Dto;
 
 namespace SH.Model {
     [System.Serializable]
-    public class Player
+    public class Player : Entity
     {
-        //Name
-        //Description
-
-        //Atk
-        //Def
-        //Speed
-
         //Movement Variables
         private float movementSpeed;
         private float rotationSpeed;
         private float gravity;
+        private float rollSpeed;
 
         public float MovementSpeed => movementSpeed;
+
         public float RotationSpeed => rotationSpeed;
+
         public float Gravity => gravity;
 
-        public Player(PlayerData data) {
+        public float RollSpeed => rollSpeed;
+
+        public Player(PlayerData data) : base(data) {
             movementSpeed = data.MovementSpeed;
             rotationSpeed = data.RotationSpeed;
             gravity = data.Gravity;
-        }
-
-        public void LevelUp() { 
-            //Aggiorno statistiche
+            rollSpeed = data.RollSpeed;
         }
     }
 
