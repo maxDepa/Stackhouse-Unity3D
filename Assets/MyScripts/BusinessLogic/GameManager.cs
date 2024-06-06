@@ -1,7 +1,6 @@
 using SH.Dto;
 using SH.Model;
 using SH.Persistence;
-using System;
 using UnityEngine;
 
 namespace SH.BusinessLogic {
@@ -15,6 +14,15 @@ namespace SH.BusinessLogic {
 
         private void Start() {
             EventManager.Instance.AddListener(MyEventIndex.OnItemFound, OnItemFound);
+        }
+
+        private void Update() {
+            if (Input.GetKeyDown(KeyCode.L)) {
+                LoadGame();
+            }
+            else if (Input.GetKeyDown(KeyCode.K)) {
+                SaveGame();
+            }
         }
 
         private void OnDestroy() {
@@ -48,9 +56,6 @@ namespace SH.BusinessLogic {
                 Key k = new Key((KeyData)data);
                 _state.AddItem(k);
             }
-
-
-            
         }
 
         private void SaveGame() {

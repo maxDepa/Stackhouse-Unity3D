@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace SH.Model
@@ -10,6 +9,10 @@ namespace SH.Model
         [SerializeField] private Inventory inventory;
 
         public Player Player => player;
+
+        public GameState() { 
+        
+        }
 
         public GameState(Player player) {
             this.player = player;
