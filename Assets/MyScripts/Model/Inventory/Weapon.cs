@@ -3,11 +3,12 @@ using SH.Dto;
 using UnityEngine;
 
 namespace SH.Model {
+    [System.Serializable]
     public class Weapon : Equipment
     {
         private GameObject fbx;
         private Vector3 spawnPosition;
-        private Quaternion spawnRotation;
+        private Vector3 spawnRotation;
 
         public Weapon(WeaponData data) : base(data) {
             this.fbx = data.Fbx;
@@ -26,10 +27,10 @@ namespace SH.Model {
         }
 
         public GameObject Instantiate(WeaponSocket socket) {
-            GameObject weaponGo = new GameObject();
-            weaponGo.transform.parent = socket.transform;
+            GameObject weaponGo = GameObject.Instantiate(fbx, socket.transform);
+            weaponGo.GetComponent<Collider>().isTrigger = true;
             weaponGo.transform.localPosition = spawnPosition;
-            weaponGo.transform.localRotation = spawnRotation;
+            weaponGo.transform.localRotation = Quaternion.Euler(spawnRotation);
             return weaponGo;
         }
     }

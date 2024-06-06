@@ -40,17 +40,9 @@ namespace SH.BusinessLogic {
             if (GetKeyDown(KeyCode.LeftControl))
                 EventManager.Instance.Cast(MyEventIndex.OnLeftCtrl);
 
-            //if (GetKeyDown(KeyCode.I))
-            //    EventManager.Instance.Cast(MyEventIndex.OnInputInventory);
+            if (GetKeyDown(KeyCode.E))
+                EventManager.Instance.Cast(MyEventIndex.OnInputExamine);
 
-            //if (GetKeyDown(KeyCode.Backspace))
-            //    EventManager.Instance.Cast(MyEventIndex.OnInputCancel);
-
-            //if (GetKeyDown(KeyCode.UpArrow))
-            //    EventManager.Instance.Cast(MyEventIndex.OnInputUpArrow);
-
-            //if (GetKeyDown(KeyCode.DownArrow))
-            //    EventManager.Instance.Cast(MyEventIndex.OnInputDownArrow);
         }
     }
 }

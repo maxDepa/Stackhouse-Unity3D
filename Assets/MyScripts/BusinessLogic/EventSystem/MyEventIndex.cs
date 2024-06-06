@@ -5,6 +5,7 @@ namespace SH.BusinessLogic {
 
         OnEquippedWeapon,
         OnUnequippedWeapon,
+        OnItemFound,
 
         OnPlayerInitialized,
         OnPlayerDamaged,
@@ -19,6 +20,7 @@ namespace SH.BusinessLogic {
         OnLeftCtrl,
 
         OnInputConfirm,
+        OnInputExamine,
         OnInputInventory,
         OnInputCancel,
         OnInputRightArrow,

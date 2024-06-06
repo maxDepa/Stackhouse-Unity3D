@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36c8e9974f1d7b4d90a0ed38dd26c0c, type: 3}
   m_Name: WD-00
   m_EditorClassIdentifier: 
+  id: fa6d85a9-ac31-4af1-9f6e-7bfa627433b8
   info:
     name: Scopa
     description: 
@@ -37,5 +38,5 @@ MonoBehaviour:
     def:
       value: 0
   fbx: {fileID: 1358973831719808, guid: 6fadedc0d720f9b409ba56a002c31e70, type: 3}
-  spawnPosition: {x: 0.14, y: 0, z: -0.32}
-  spawnRotation: {x: 0.70710677, y: 0, z: 0, w: 0.70710677}
+  spawnPosition: {x: 0.081, y: 0.056, z: -0.288}
+  spawnRotation: {x: 82.942894, y: 181.64792, z: 181.64124}

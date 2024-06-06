@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e36c8e9974f1d7b4d90a0ed38dd26c0c, type: 3}
   m_Name: WD-01
   m_EditorClassIdentifier: 
+  id: 1845a9a2-1b29-40bd-abff-844170dd1c22
   info:
     name: Valigetta
     description: 
@@ -37,5 +38,5 @@ MonoBehaviour:
     def:
       value: 0
   fbx: {fileID: 1368751818659320, guid: 972a49b5646473f42bf39f20b14ced49, type: 3}
-  spawnPosition: {x: 0.553, y: 0.032, z: -0.32}
-  spawnRotation: {x: 0.49999997, y: -0.49999997, z: -0.49999997, w: -0.49999997}
+  spawnPosition: {x: 0.533, y: 0.037, z: 0.014}
+  spawnRotation: {x: 275.73425, y: 179.99933, z: 268.01596}

@@ -1,3 +1,4 @@
+using SH.Dto;
 using SH.Model;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace SH.BusinessLogic {
         public Vector2Int additionalVector2;
         //...
         public Weapon additionalWeapon;
+        public ItemData additionalItemData;
 
         public MyEventArgs(int additionalInt) { 
             this.additionalInt = additionalInt;
@@ -20,6 +22,10 @@ namespace SH.BusinessLogic {
 
         public MyEventArgs(Weapon additionalWeapon) {
             this.additionalWeapon = additionalWeapon;
+        }
+
+        public MyEventArgs(ItemData additionalItemData) {
+            this.additionalItemData = additionalItemData;
         }
     }
 }

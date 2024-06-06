@@ -1,6 +1,7 @@
 using SH.Model;
 
 namespace SH.Dto {
+    [System.Serializable]
     public abstract class Equipment : Item
     {
         private StatsUpdater stats;

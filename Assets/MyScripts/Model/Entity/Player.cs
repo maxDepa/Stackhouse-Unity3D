@@ -1,14 +1,15 @@
 using SH.Dto;
+using UnityEngine;
 
 namespace SH.Model {
     [System.Serializable]
     public class Player : Entity
     {
         //Movement Variables
-        private float movementSpeed;
-        private float rotationSpeed;
-        private float gravity;
-        private float rollSpeed;
+        [SerializeField] private float movementSpeed;
+        [SerializeField] private float rotationSpeed;
+        [SerializeField] private float gravity;
+        [SerializeField] private float rollSpeed;
 
         public float MovementSpeed => movementSpeed;
 

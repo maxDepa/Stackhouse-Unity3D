@@ -1,5 +1,4 @@
 using SH.Model;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace SH.BusinessLogic {
@@ -9,7 +8,7 @@ namespace SH.BusinessLogic {
     {
         [Header("FBX")]
         [SerializeField] public GameObject fbx;
-        [SerializeField] public AnimatorController controller;
+        [SerializeField] public RuntimeAnimatorController controller;
 
         [Header("Components")]
         [SerializeField] private Transform cam;
@@ -22,6 +21,7 @@ namespace SH.BusinessLogic {
          * Al posto di riferimento al GameManager, sarebbe meglio
          * Non esporre la property ma slegare le cose usando un evento
          */
+
         private Player _player => GameManager.Instance.Player;
 
         private void Start() {
@@ -59,8 +59,10 @@ namespace SH.BusinessLogic {
             fbx.transform.localPosition = Vector3.zero;
             fbx.transform.localRotation = Quaternion.identity;
 
-            Transform hand = fbx.transform.Find("Hand_R");
-            hand.gameObject.AddComponent<WeaponSocket>();
+            foreach(Transform t in fbx.GetComponentsInChildren<Transform>()) {
+                if (t.name.Equals("Hand_R"))
+                    t.gameObject.AddComponent<WeaponSocket>();
+            }
         }
 
         private void InitializeAnimator() {
