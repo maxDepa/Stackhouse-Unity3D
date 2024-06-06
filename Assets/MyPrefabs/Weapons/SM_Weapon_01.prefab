@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 23710727786164004}
   - component: {fileID: 64680383379113990}
   m_Layer: 0
-  m_Name: SM_Prop_Briefcase_01
+  m_Name: SM_Weapon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

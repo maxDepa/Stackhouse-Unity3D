@@ -19,6 +19,11 @@ namespace SH.Model {
         public virtual void Buff(int value) { 
             this.value += value;
         }
+
+        public virtual void Debuff(int value) { 
+            this.value -= value;
+            this.value = Mathf.Max(0, this.value);
+        }
     }
 
 }

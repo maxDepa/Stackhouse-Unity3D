@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SH.Data {
+namespace SH.Dto {
     [CreateAssetMenu(fileName = "CameraData", menuName = "DataStructures/CameraData", order = 1)]
     public class CameraData : ScriptableObject
     {

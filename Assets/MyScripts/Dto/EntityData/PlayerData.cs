@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace SH.Dto {
-    [CreateAssetMenu(fileName = "PlayerData", menuName = "DataStructures/PlayerData", order = 0)]
+    [CreateAssetMenu(fileName = "PlayerData", menuName = "DataStructures/Entities/PlayerData", order = 0)]
     public class PlayerData : EntityData
     {
         [Header("Player")]

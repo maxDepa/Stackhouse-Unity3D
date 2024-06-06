@@ -1,6 +1,4 @@
-using SH.Dto;
 using SH.Model;
-using System;
 using UnityEditor.Animations;
 using UnityEngine;
 
@@ -20,9 +18,10 @@ namespace SH.BusinessLogic {
 
         private StateMachine<PlayerStateIndex> stateMachine;
 
-        /*Al posto di riferimento al GameManager, sarebbe meglio
-        Non esporre la property ma slegare le cose usando un evento apposito
-        */
+        /*
+         * Al posto di riferimento al GameManager, sarebbe meglio
+         * Non esporre la property ma slegare le cose usando un evento
+         */
         private Player _player => GameManager.Instance.Player;
 
         private void Start() {
@@ -59,6 +58,9 @@ namespace SH.BusinessLogic {
             fbx.transform.parent = transform;
             fbx.transform.localPosition = Vector3.zero;
             fbx.transform.localRotation = Quaternion.identity;
+
+            Transform hand = fbx.transform.Find("Hand_R");
+            hand.gameObject.AddComponent<WeaponSocket>();
         }
 
         private void InitializeAnimator() {

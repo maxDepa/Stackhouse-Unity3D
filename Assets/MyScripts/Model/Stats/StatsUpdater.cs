@@ -33,5 +33,19 @@ namespace SH.Model {
             atk.Buff(3);
             def.Buff(2);
         }
+
+        public void Buff(StatsUpdater stats) {
+            hp.Buff(stats.hp.Value);
+            mp.Buff(stats.mp.Value);
+            atk.Buff(stats.atk.Value);
+            def.Buff(stats.def.Value);
+        }
+
+        public void Debuff(StatsUpdater stats) {
+            hp.Debuff(stats.hp.Value);
+            mp.Debuff(stats.mp.Value);
+            atk.Debuff(stats.atk.Value);
+            def.Debuff(stats.def.Value);
+        }
     }
 }

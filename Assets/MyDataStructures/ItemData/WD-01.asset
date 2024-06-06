@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e36c8e9974f1d7b4d90a0ed38dd26c0c, type: 3}
+  m_Name: WD-01
+  m_EditorClassIdentifier: 
+  info:
+    name: Valigetta
+    description: 
+  sprite: {fileID: 0}
+  maxQuantity: 0
+  weight: 1
+  sellValue: 15
+  stats:
+    level:
+      value: 0
+      maxValue: 0
+    hp:
+      value: 0
+      maxValue: 0
+    mp:
+      value: 0
+      maxValue: 0
+    exp:
+      value: 0
+      maxValue: 0
+    atk:
+      value: 10
+    def:
+      value: 0
+  fbx: {fileID: 1368751818659320, guid: 972a49b5646473f42bf39f20b14ced49, type: 3}
+  spawnPosition: {x: 0.553, y: 0.032, z: -0.32}
+  spawnRotation: {x: 0.49999997, y: -0.49999997, z: -0.49999997, w: -0.49999997}

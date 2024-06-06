@@ -21,6 +21,12 @@ namespace SH.Model {
             maxValue += value;
         }
 
+        public override void Debuff(int value) {
+            //base.Debuff(value);
+            maxValue -= value;
+            this.value = Mathf.Min(this.value, maxValue);
+        }
+
         public bool Increment(int value) {
             this.value = Mathf.Clamp(this.value + value, 0, maxValue);
             return this.value == maxValue;

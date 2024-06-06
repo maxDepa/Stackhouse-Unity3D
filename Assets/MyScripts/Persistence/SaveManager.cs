@@ -1,4 +1,5 @@
 using SH.Model;
+using System.IO;
 using UnityEngine;
 
 namespace SH.Persistence {
@@ -10,7 +11,7 @@ namespace SH.Persistence {
             Debug.LogWarning("Trying to save state...");
             //FileStream fs = new FileStream(savePath, FileMode.Create);
             //BinaryWriter bw = new BinaryWriter(fs);
-            //bw.Serialize()
+            //bw.
         }
 
         public static GameState Load() {

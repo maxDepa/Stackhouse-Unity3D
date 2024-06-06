@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace SH.BusinessLogic {
     public enum MyEventIndex
     {
         OnGameStart,
+
+        OnEquippedWeapon,
+        OnUnequippedWeapon,
 
         OnPlayerInitialized,
         OnPlayerDamaged,

@@ -18,5 +18,13 @@ namespace SH.Model {
         public void LevelUp() {
             stats.LevelUp();
         }
+
+        public void Debuff(StatsUpdater stats) {
+            this.stats.Debuff(stats);
+        }
+
+        public void Buff(StatsUpdater stats) {
+            this.stats.Buff(stats);
+        }
     }
 }
