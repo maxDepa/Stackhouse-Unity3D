@@ -9,6 +9,7 @@ namespace SH.BusinessLogic {
 
         OnNpcWorking,
         OnNpcNotWorking,
+        OnNpcSlapped,
 
         OnPlayerInitialized,
         OnPlayerDamaged,
@@ -16,6 +17,7 @@ namespace SH.BusinessLogic {
         OnPokemonDamaged,
         OnRandomEncounter,
         OnDialogueStart,
+
 
         OnMouseLeftClick,
         OnMouseRightClick,
