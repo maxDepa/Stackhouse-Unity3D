@@ -31,6 +31,8 @@ namespace SH.BusinessLogic {
         OnInputRightArrow,
         OnInputUpArrow,
         OnInputLeftArrow,
-        OnInputDownArrow
+        OnInputDownArrow,
+
+        OnProductivityCheck
     }
 }

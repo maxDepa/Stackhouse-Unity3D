@@ -7,6 +7,7 @@ namespace SH.Model
     {
         [SerializeField] private Player player;
         [SerializeField] private Inventory inventory;
+        [SerializeField] private int productivity = 50;
 
         public Player Player => player;
 
@@ -25,6 +26,11 @@ namespace SH.Model
 
         public void RemoveItem(Item item) {
             inventory.Remove(item);
+        }
+
+        public void UpdateProductivity(int productivity)
+        {
+            this.productivity += productivity;
         }
     }
 }

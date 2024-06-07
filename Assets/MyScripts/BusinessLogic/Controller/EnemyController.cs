@@ -9,8 +9,10 @@ namespace SH.BusinessLogic
     public class EnemyController : EntityController
     {
         [Header("Enemy")]
-        [SerializeField]
-        private NavMeshAgent agent;
+        [SerializeField] private NavMeshAgent agent;
+        //[SerializeField] private Transform target;
+        [SerializeField] private WorkingHotspot workingHotspot;
+        [SerializeField] public uint productivity = 1;
 
         [SerializeField]
         private Transform target;
