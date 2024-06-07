@@ -67,6 +67,18 @@ namespace SH.BusinessLogic {
             stateMachine.ChangeState(EntityStateIndex.Move);
         }
 
+        public void GoToWorking()
+        {
+            currentState = EntityStateIndex.Working;
+            stateMachine.ChangeState(EntityStateIndex.Working);
+        }
+
+        public void GoToFoolingAround()
+        {
+            currentState = EntityStateIndex.FoolingAround;
+            stateMachine.ChangeState(EntityStateIndex.FoolingAround);
+        }
+
         public void GoToRoll() {
             currentState = EntityStateIndex.Roll;
             stateMachine.ChangeState(EntityStateIndex.Roll);

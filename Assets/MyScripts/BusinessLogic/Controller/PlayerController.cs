@@ -26,7 +26,7 @@ namespace SH.BusinessLogic {
         protected override void InitializeStateMachine() {
             AddState(EntityStateIndex.Move, new EntityState_Move(this,
                 new PlayerRigidbodyMovementStrategy(rigidbody, cam, _player.MovementSpeed),
-                new PlayerMoveAnimatorAnimationStrategy(animator),
+                new PlayerMoveAnimatorAnimationStrategy(animator, "Move"),
                 new PlayerTransformRotationStrategy(transform, cam, _player.RotationSpeed),
                 () => {
                     EventManager.Instance.AddListener(MyEventIndex.OnMouseLeftClick, OnMouseLeftClick);

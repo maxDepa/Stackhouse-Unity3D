@@ -14,8 +14,13 @@ namespace SH.BusinessLogic {
         protected override void InitializeStateMachine() {
             AddState(EntityStateIndex.Move, new EntityState_Move(this,
                 new NavMeshFollowMovementStrategy(agent, target),
-                new EnemyMoveAnimatorAnimationStrategy(agent, animator)));
-            GoToMove();
+                new EnemyMoveAnimatorAnimationStrategy(agent, animator, "Move")));
+
+            AddState(EntityStateIndex.Working, new EntityState_Working(this,
+             new AnimatorAnimationStrategy(animator, "Working")));
+
+
+            GoToWorking();
         }
 
     }

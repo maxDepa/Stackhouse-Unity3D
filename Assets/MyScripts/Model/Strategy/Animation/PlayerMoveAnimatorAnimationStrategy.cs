@@ -4,12 +4,7 @@ using UnityEngine;
 namespace SH.Model {
     public class PlayerMoveAnimatorAnimationStrategy : AnimatorAnimationStrategy
     {
-        public PlayerMoveAnimatorAnimationStrategy(Animator animator) : base(animator) {
-
-        }
-
-        public override void Initialize() {
-            _animator.Play("Move");
+        public PlayerMoveAnimatorAnimationStrategy(Animator animator, string animationState) : base(animator, animationState) {
         }
 
         public override void Update() {
