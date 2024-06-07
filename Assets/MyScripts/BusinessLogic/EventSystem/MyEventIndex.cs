@@ -7,6 +7,9 @@ namespace SH.BusinessLogic {
         OnUnequippedWeapon,
         OnItemFound,
 
+        OnNpcWorking,
+        OnNpcNotWorking,
+
         OnPlayerInitialized,
         OnPlayerDamaged,
         OnPlayerDeath,

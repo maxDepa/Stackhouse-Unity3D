@@ -11,6 +11,7 @@ namespace SH.BusinessLogic {
         //...
         public Weapon additionalWeapon;
         public ItemData additionalItemData;
+        public EnemyController additionalEnemyController;
 
         public MyEventArgs(int additionalInt) { 
             this.additionalInt = additionalInt;
@@ -26,6 +27,10 @@ namespace SH.BusinessLogic {
 
         public MyEventArgs(ItemData additionalItemData) {
             this.additionalItemData = additionalItemData;
+        }
+
+        public MyEventArgs(EnemyController additionalEnemyController) {
+            this.additionalEnemyController = additionalEnemyController;
         }
     }
 }

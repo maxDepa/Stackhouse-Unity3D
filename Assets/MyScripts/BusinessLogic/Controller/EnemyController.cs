@@ -8,19 +8,24 @@ namespace SH.BusinessLogic {
     {
         [Header("Enemy")]
         [SerializeField] private NavMeshAgent agent;
-        [SerializeField] private Transform target;
+        //[SerializeField] private Transform target;
+        [SerializeField] private WorkingHotspot workingHotspot;
 
 
         protected override void InitializeStateMachine() {
             AddState(EntityStateIndex.Move, new EntityState_Move(this,
-                new NavMeshFollowMovementStrategy(agent, target),
+                new NavMeshFollowMovementStrategy(agent, workingHotspot.transform),
                 new EnemyMoveAnimatorAnimationStrategy(agent, animator, "Move")));
 
             AddState(EntityStateIndex.Working, new EntityState_Working(this,
-             new AnimatorAnimationStrategy(animator, "Working")));
+             new AnimatorAnimationStrategy(animator, "Working"),
+             () => { EventManager.Instance.Cast(MyEventIndex.OnNpcWorking, new EventArgs(this)); },
+             () => { EventManager.Instance.Cast(MyEventIndex.OnNpcNotWorking; }
+             )
+             );
 
 
-            GoToWorking();
+            GoToMove();
         }
 
     }
