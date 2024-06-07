@@ -10,6 +10,7 @@ namespace SH.BusinessLogic {
         [SerializeField] private NavMeshAgent agent;
         //[SerializeField] private Transform target;
         [SerializeField] private WorkingHotspot workingHotspot;
+        [SerializeField] public uint productivity = 1;
 
 
         protected override void InitializeStateMachine() {

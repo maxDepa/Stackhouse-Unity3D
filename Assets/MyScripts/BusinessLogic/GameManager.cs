@@ -65,5 +65,10 @@ namespace SH.BusinessLogic {
         private void LoadGame() {
             _state = SaveManager.Load();
         }
+
+        public void UpdateProductivity(int productivity)
+        {
+            _state.UpdateProductivity(productivity);
+        }
     }
 }
