@@ -19,8 +19,8 @@ namespace SH.BusinessLogic {
 
             AddState(EntityStateIndex.Working, new EntityState_Working(this,
              new AnimatorAnimationStrategy(animator, "Working"),
-             () => { EventManager.Instance.Cast(MyEventIndex.OnNpcWorking, new EventArgs(this)); },
-             () => { EventManager.Instance.Cast(MyEventIndex.OnNpcNotWorking; }
+             () => { EventManager.Instance.Cast(MyEventIndex.OnNpcWorking, new MyEventArgs(this)); },
+             () => { EventManager.Instance.Cast(MyEventIndex.OnNpcNotWorking, new MyEventArgs(this)); }
              )
              );
 
