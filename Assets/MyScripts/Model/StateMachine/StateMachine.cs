@@ -7,6 +7,8 @@ namespace SH.Model
         private Dictionary<T, IState> states = new Dictionary<T, IState>();
         private IState currentState;
 
+        public IState CurrentState => currentState;
+
         public StateMachine() { 
 
         }

@@ -1,11 +1,11 @@
 using SH.BusinessLogic;
 
 namespace SH.Model {
-    public class PlayerState_Roll : PlayerTimedState
+    public class EntityState_Roll : EntityTimedState
     {
         private IMovementStrategy _movementStrategy;
 
-        public PlayerState_Roll(PlayerController owner, float duration, IAnimationStrategy animationStrategy, IMovementStrategy movementStrategy) : base(owner, duration, animationStrategy) {
+        public EntityState_Roll(PlayerController owner, float duration, IAnimationStrategy animationStrategy, IMovementStrategy movementStrategy) : base(owner, duration, animationStrategy) {
             this._movementStrategy = movementStrategy;
         }
 

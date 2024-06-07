@@ -1,9 +1,9 @@
 using SH.BusinessLogic;
 
 namespace SH.Model {
-    public abstract class PlayerState : State<PlayerController>
+    public abstract class EntityState : State<EntityController>
     {
-        protected PlayerState(PlayerController owner) : base(owner) {
+        protected EntityState(EntityController owner) : base(owner) {
 
         }
 

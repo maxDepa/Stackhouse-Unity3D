@@ -10,21 +10,13 @@ namespace SH.BusinessLogic {
         [SerializeField] private NavMeshAgent agent;
         [SerializeField] private Transform target;
 
+
         protected override void InitializeStateMachine() {
-            //stateMachine.AddState(Model.PlayerStateIndex.Move, );
+            AddState(EntityStateIndex.Move, new EntityState_Move(this,
+                new NavMeshFollowMovementStrategy(agent, target),
+                new EnemyMoveAnimatorAnimationStrategy(agent, animator)));
+            GoToMove();
         }
 
-        //DEBUG!!! Va spostata dentro uno stato move
-        IMovementStrategy strategy;
-
-        protected override void Start() {
-            base.Start();
-            strategy = new NavMeshFollowMovementStrategy(agent, target);
-        }
-
-        protected override void Update() {
-            //base.Update();
-            strategy.Move(Time.deltaTime);
-        }
     }
 }

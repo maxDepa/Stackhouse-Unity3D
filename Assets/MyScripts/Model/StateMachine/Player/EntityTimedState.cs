@@ -1,12 +1,12 @@
 using SH.BusinessLogic;
 
 namespace SH.Model {
-    public abstract class PlayerTimedState : PlayerState
+    public abstract class EntityTimedState : EntityState
     {
         private Timer timer;
         private IAnimationStrategy animationStrategy;
 
-        protected PlayerTimedState(PlayerController owner, float duration, IAnimationStrategy animationStrategy) : base(owner) {
+        protected EntityTimedState(PlayerController owner, float duration, IAnimationStrategy animationStrategy) : base(owner) {
             timer = new Timer(duration);
             this.animationStrategy = animationStrategy;
         }

@@ -11,7 +11,9 @@ namespace SH.BusinessLogic {
 
         protected Animator animator;
 
-        protected StateMachine<PlayerStateIndex> stateMachine = new StateMachine<PlayerStateIndex>();
+        protected StateMachine<EntityStateIndex> stateMachine = new StateMachine<EntityStateIndex>();
+
+        public EntityStateIndex currentState;
 
         protected virtual void Start() {
             InitializeFBX();
@@ -48,16 +50,26 @@ namespace SH.BusinessLogic {
 
         protected abstract void InitializeStateMachine();
 
-        public void GoToAttack() {
-            stateMachine.ChangeState(PlayerStateIndex.Attack);
+  
+        public void AddState(EntityStateIndex state, EntityState playerState)
+        {
+              stateMachine.AddState(state, playerState);
+        }
+
+        public void GoToAttack()
+        {
+            currentState = EntityStateIndex.Attack;
+            stateMachine.ChangeState(EntityStateIndex.Attack);
         }
 
         public void GoToMove() {
-            stateMachine.ChangeState(PlayerStateIndex.Move);
+            currentState = EntityStateIndex.Move;
+            stateMachine.ChangeState(EntityStateIndex.Move);
         }
 
         public void GoToRoll() {
-            stateMachine.ChangeState(PlayerStateIndex.Roll);
+            currentState = EntityStateIndex.Roll;
+            stateMachine.ChangeState(EntityStateIndex.Roll);
         }
 
         public float GetAnimationLength(string clipName) {

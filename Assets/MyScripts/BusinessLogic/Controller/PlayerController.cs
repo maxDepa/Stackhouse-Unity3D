@@ -24,21 +24,29 @@ namespace SH.BusinessLogic {
         }
 
         protected override void InitializeStateMachine() {
-            stateMachine.AddState(PlayerStateIndex.Move, new PlayerState_Move(this,
+            AddState(EntityStateIndex.Move, new EntityState_Move(this,
                 new PlayerRigidbodyMovementStrategy(rigidbody, cam, _player.MovementSpeed),
+                new PlayerMoveAnimatorAnimationStrategy(animator),
                 new PlayerTransformRotationStrategy(transform, cam, _player.RotationSpeed),
-                new PlayerMoveAnimatorAnimationStrategy(animator)
-                )
+                () => {
+                    EventManager.Instance.AddListener(MyEventIndex.OnMouseLeftClick, OnMouseLeftClick);
+                    EventManager.Instance.AddListener(MyEventIndex.OnLeftCtrl, OnLeftCtrl);
+                },
+                () => {
+                    EventManager.Instance.RemoveListener(MyEventIndex.OnMouseLeftClick, OnMouseLeftClick);
+                    EventManager.Instance.RemoveListener(MyEventIndex.OnLeftCtrl, OnLeftCtrl);
+                })
             );
 
-            stateMachine.AddState(PlayerStateIndex.Attack, new PlayerState_Attack(
+
+            AddState(EntityStateIndex.Attack, new EntityState_Attack(
                 this,
                 GetAnimationLength("Attack"),
                 new AttackAnimationStrategy(animator)
                 )
             );
 
-            stateMachine.AddState(PlayerStateIndex.Roll, new PlayerState_Roll(
+            AddState(EntityStateIndex.Roll, new EntityState_Roll(
                 this,
                 GetAnimationLength("Roll"),
                 new RollAnimationStrategy(animator),
@@ -46,8 +54,9 @@ namespace SH.BusinessLogic {
                 )
             );
 
-            stateMachine.ChangeState(PlayerStateIndex.Move);
+            stateMachine.ChangeState(EntityStateIndex.Move);
         }
+
 
         protected override void InitializeFBX() {
             base.InitializeFBX();
@@ -63,6 +72,22 @@ namespace SH.BusinessLogic {
 
         private void UpdateGravity() {
             rigidbody.AddForce(Vector3.down * _player.Gravity);
+        }
+
+        private void OnMouseLeftClick(MyEventArgs arg0)
+        {
+            GoToAttack();
+        }
+
+        private void OnLeftCtrl(MyEventArgs arg0)
+        {
+            GoToRoll();
+        }
+
+        private void OnDestroy()
+        {
+            EventManager.Instance.RemoveListener(MyEventIndex.OnMouseLeftClick, OnMouseLeftClick);
+            EventManager.Instance.RemoveListener(MyEventIndex.OnLeftCtrl, OnLeftCtrl);
         }
 
     }
