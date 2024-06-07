@@ -7,7 +7,8 @@ namespace SH.Model
         private Dictionary<T, IState> states = new Dictionary<T, IState>();
         private IState currentState;
 
-        public IState CurrentState => currentState;
+        private T currentStateKey;
+        public T CurrentStateKey => currentStateKey;
 
         public StateMachine() { 
 
@@ -29,6 +30,7 @@ namespace SH.Model
             currentState?.Exit();
             currentState = states[key];
             currentState.Initialize();
+            currentStateKey = key;
         }
     }
 }

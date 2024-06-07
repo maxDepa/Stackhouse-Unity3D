@@ -1,19 +1,33 @@
 using SH.BusinessLogic;
+using UnityEngine;
 
-namespace SH.Model {
+namespace SH.Model
+{
     public class EntityState_Attack : EntityTimedState
     {
-        public EntityState_Attack(PlayerController owner, float duration, IAnimationStrategy animationStrategy) : base(owner, duration, animationStrategy) {
+        private GameObject slapChecker;
 
+        public EntityState_Attack(
+            PlayerController owner,
+            float duration,
+            IAnimationStrategy animationStrategy,
+            GameObject slap
+        ) : base(owner, duration, animationStrategy)
+        {  
+            this.slapChecker = slap;
         }
 
-        public override void LateExecute() {
-
+        public override void Initialize()
+        {
+            base.Initialize();
+            slapChecker.gameObject.SetActive(true);
         }
 
-        public override void Exit() {
+        public override void LateExecute() { }
 
+        public override void Exit()
+        {
+            slapChecker.gameObject.SetActive(false);
         }
-
     }
 }

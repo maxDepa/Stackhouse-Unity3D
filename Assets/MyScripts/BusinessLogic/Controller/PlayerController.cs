@@ -1,15 +1,20 @@
 using SH.Model;
 using UnityEngine;
 
-namespace SH.BusinessLogic {
-
+namespace SH.BusinessLogic
+{
     [RequireComponent(typeof(Rigidbody))]
     public class PlayerController : EntityController, ISceneLoader
     {
         [Header("Player")]
-        [SerializeField] private new Rigidbody rigidbody;
-        [SerializeField] private Transform cam;
-        
+        [SerializeField]
+        private new Rigidbody rigidbody;
+
+        [SerializeField]
+        private Transform cam;
+
+        [SerializeField]
+        private GameObject slapChecker;
 
         /*
          * Al posto di riferimento al GameManager, sarebbe meglio
@@ -17,12 +22,11 @@ namespace SH.BusinessLogic {
          */
         private Player _player => GameManager.Instance.Player;
 
-
-        protected override void Update() {
+        protected override void Update()
+        {
             base.Update();
             UpdateGravity();
         }
-
         protected override void InitializeStateMachine() {
             AddState(EntityStateIndex.Move, new EntityState_Move(this,
                 new PlayerRigidbodyMovementStrategy(rigidbody, cam, _player.MovementSpeed),
@@ -37,12 +41,13 @@ namespace SH.BusinessLogic {
                     EventManager.Instance.RemoveListener(MyEventIndex.OnLeftCtrl, OnLeftCtrl);
                 })
             );
-
+            
 
             AddState(EntityStateIndex.Attack, new EntityState_Attack(
                 this,
                 GetAnimationLength("Attack"),
-                new AttackAnimationStrategy(animator)
+                new AttackAnimationStrategy(animator),
+                slapChecker
                 )
             );
 
@@ -57,20 +62,37 @@ namespace SH.BusinessLogic {
             stateMachine.ChangeState(EntityStateIndex.Move);
         }
 
-
-        protected override void InitializeFBX() {
+        protected override void InitializeFBX()
+        {
             base.InitializeFBX();
             SpawnWeaponSocket();
+            SetRightHandTriggerDamage();
         }
 
-        private void SpawnWeaponSocket() {
-            foreach (Transform t in fbx.GetComponentsInChildren<Transform>()) {
+        private void SpawnWeaponSocket()
+        {
+            foreach (Transform t in fbx.GetComponentsInChildren<Transform>())
+            {
                 if (t.name.Equals("Hand_R"))
                     t.gameObject.AddComponent<WeaponSocket>();
             }
         }
 
-        private void UpdateGravity() {
+        private void SetRightHandTriggerDamage()
+        {
+            foreach (Transform t in fbx.GetComponentsInChildren<Transform>())
+            {
+                if (t.name.Equals("Hand_R"))
+                {
+                    GameObject go = Instantiate(slapChecker, t);
+                    go.name = "SlapChecker";
+                    slapChecker = go;
+                }
+            }
+        }
+
+        private void UpdateGravity()
+        {
             rigidbody.AddForce(Vector3.down * _player.Gravity);
         }
 
