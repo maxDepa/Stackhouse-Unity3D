@@ -7,7 +7,7 @@ namespace SH.Model
     {
         [SerializeField] private Player player;
         [SerializeField] private Inventory inventory;
-        [SerializeField] private int productivity;
+        [SerializeField] private int productivity = 50;
 
         public Player Player => player;
 
