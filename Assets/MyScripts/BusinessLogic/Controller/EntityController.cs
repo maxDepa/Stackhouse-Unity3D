@@ -89,7 +89,7 @@ namespace SH.BusinessLogic {
                 if (clip.name.Equals(clipName))
                     return clip.length / animator.speed;
             }
-            return 0f;
+            return 0;
         }
 
     }

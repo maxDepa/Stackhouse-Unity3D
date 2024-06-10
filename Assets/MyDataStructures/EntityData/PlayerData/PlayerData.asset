@@ -32,7 +32,7 @@ MonoBehaviour:
       value: 7
     def:
       value: 5
-  movementSpeed: 5
+  movementSpeed: 3
   rotationSpeed: 10
   gravity: 9.8
   rollSpeed: 4
